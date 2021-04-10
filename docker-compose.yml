@@ -1,0 +1,50 @@
+version: "3"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    environment:
+      UWSGI_HOST: "app"
+      UWSGI_PORT: 10080
+    command: >
+      /bin/sh -c
+      "envsubst '
+      $$UWSGI_HOST
+      $$UWSGI_PORT
+      '< /etc/nginx/nginx.conf.template
+      > /etc/nginx/nginx.conf
+      && nginx -g 'daemon off;'"
+    depends_on:
+      - app
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.flask
+    restart: on-failure
+    ports:
+      - "10080:10080"
+    environment:
+      APP_ENV: "staging"
+      DATABASE_USER: "postgres"
+      DATABASE_PASSWORD: "password"
+      DATABASE_PORT: 5432
+      DATABASE_NAME: "testdb"
+      DATABASE_HOST: "db"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13.2-alpine
+    restart: on-failure
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      PGPASSWORD: password
+      POSTGRES_DB: testdb
+      DATABASE_HOST: localhost

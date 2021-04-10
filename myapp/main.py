@@ -1,4 +1,4 @@
-from flask import Flask, session, render_template, redirect, url_for, flash, abort, request, g, has_request_context
+from flask import Flask, session, render_template, redirect, url_for, flash, abort, request, g
 from werkzeug.wrappers import Response
 from markupsafe import escape
 from myapp.routers import entry
@@ -11,11 +11,13 @@ logger = getLogger(__name__)
 
 
 def before_action():
-    if has_request_context:
-        rh = RequestHeaders(host=request.headers.get("HOST"), user_agent=request.headers.get("USER_AGENT"))
-    # app.loggerで出力するとflask loggerのsetLevelが適用される。
     logger.info(f"request: {request.url}")
+
+    rh = RequestHeaders(host=request.headers.get("HOST"), user_agent=request.headers.get("USER_AGENT"))
+
+    # app.loggerで出力するとflask loggerのsetLevelが適用される。
     app.logger.debug(f"Host: {rh.host}, UserAgent: {rh.user_agent}")
+    app.logger.debug(f"DATABASE_URL: {config.DATABASE_URL}")
 
     # リクエスト時にはinit_appを通らないのでこれはコケる
     # getLogger(__name__).info(g.what_time)
@@ -46,11 +48,11 @@ def init_app():
     app.before_request(before_action)
     app.after_request(after_action)
 
-    from datetime import datetime
-
     # リクエスト時にはapp_contextが存在しない？
     # なのでapp_contectを入れないと怒られる。
     with app.app_context():
+        from datetime import datetime
+
         g.what_time = datetime.now()
         logger.info(f"init: {g.what_time}")
 

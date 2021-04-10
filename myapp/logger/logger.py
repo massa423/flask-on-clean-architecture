@@ -7,7 +7,10 @@ import sys
 class RequestFormatter(Formatter):
     def format(self, record):
         if has_request_context():
-            record.remote_addr = request.remote_addr
+            if request.headers.get("X-Forwarded-For"):
+                record.remote_addr = request.headers.get("X-Forwarded-For")
+            else:
+                record.remote_addr = request.remote_addr
         else:
             record.remote_addr = None
 
