@@ -1,0 +1,28 @@
+{
+  // base
+  "[python]": {
+    "editor.formatOnSave": true,
+  },
+  "python.pythonPath": ".venv/bin/python",
+  "python.autoComplete.extraPaths": [
+    "${workspaceFolder}/.venv/bin"
+  ],
+  // linter
+  "python.linting.enabled": true,
+  "python.linting.lintOnSave": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  // type checker
+  "python.linting.mypyEnabled": true,
+  // formatter
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": ".venv/bin/black",
+  "python.linting.flake8Args": [
+    "--max-line-length=120",
+    "--ignore=E402",
+    "--max-complexity=20"
+  ],
+  "python.formatting.blackArgs": [
+    "--line-length=120"
+  ],
+}
