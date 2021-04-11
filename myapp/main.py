@@ -6,6 +6,7 @@ from myapp.config import config
 from myapp.logger.logger import Logger
 from logging import getLogger
 from myapp.libs.request_headers import RequestHeaders
+from myapp.interfaces.gateways.database.db import db_session
 
 logger = getLogger(__name__)
 
@@ -100,3 +101,8 @@ def not_found(error):
 @app.errorhandler(500)
 def internal_server_error(error):
     return render_template("500.html"), error.code
+
+
+@app.teardown_appcontext
+def shutdown_session(exception=None):
+    db_session.remove()

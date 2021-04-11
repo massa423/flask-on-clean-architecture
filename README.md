@@ -1,4 +1,12 @@
 
+## DB初期化
+
+```
+export FLASK_APP=myapp/cli.py
+export APP_ENV=development
+flask init-db
+```
+
 ## アプリケーション起動
 
 ### development

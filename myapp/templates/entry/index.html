@@ -13,17 +13,30 @@
 <body>
   <div class="container">
     <h1>This is a entry page</h1>
-    <ul>
-      <li>{{ g.name }}</li>
-    </ul>
-    <form action="done" method="post">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <p class="{{ category }}">{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <form action="confirm" method="post">
       <div class="mb-3">
         <label for="name" class="form-label">Name</label>
         <input type="text" name="name" class="form-control" id="name">
       </div>
       <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" name="password" class="form-control" id="password">
+        <label for="password1" class="form-label">Password</label>
+        <input type="password" name="password1" class="form-control" id="password1">
+      </div>
+      <div class="mb-3">
+        <label for="password2" class="form-label">Password(confirm)</label>
+        <input type="password" name="password2" class="form-control" id="password2">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+        <input type="email" name="email" class="form-control" id="exampleFormControlInput1"
+          placeholder="name@example.com">
       </div>
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1">
