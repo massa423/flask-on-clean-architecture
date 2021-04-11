@@ -1,57 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-  <title>Entry</title>
-</head>
-
-<body>
-  <div class="container">
-    <h1>This is a entry page</h1>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-    {% for category, message in messages %}
-    <p class="{{ category }}">{{ message }}</p>
-    {% endfor %}
-    {% endif %}
-    {% endwith %}
-    <form action="confirm" method="post">
-      <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" name="name" class="form-control" id="name">
-      </div>
-      <div class="mb-3">
-        <label for="password1" class="form-label">Password</label>
-        <input type="password" name="password1" class="form-control" id="password1">
-      </div>
-      <div class="mb-3">
-        <label for="password2" class="form-label">Password(confirm)</label>
-        <input type="password" name="password2" class="form-control" id="password2">
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-        <input type="email" name="email" class="form-control" id="exampleFormControlInput1"
-          placeholder="name@example.com">
-      </div>
-      <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-      </div>
-      <button type="submit" id="submit" class="btn btn-primary">Submit</button>
-    </form>
-    <a href="/">[back to index]</a>
+{% extends "layouts/application.html" %}
+{% block title %}
+<title>Entry</title>
+{% endblock %}
+{% block body %}
+<h1>This is a entry page</h1>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<p class="{{ category }}">{{ message }}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<form action="confirm" method="post" id="myform">
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" name="name" class="form-control" id="name">
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-    crossorigin="anonymous"></script>
-  <script>
-    const btn = document.getElementById('btn');
-  </script>
-</body>
+  <div class="mb-3">
+    <label for="password1" class="form-label">Password</label>
+    <input type="password" name="password1" class="form-control" id="password1">
+  </div>
+  <div class="mb-3">
+    <label for="password2" class="form-label">Password(confirm)</label>
+    <input type="password" name="password2" class="form-control" id="password2">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+    <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+</form>
+<a href="/">[back to index]</a>
 
-</html>
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+{% endblock %}

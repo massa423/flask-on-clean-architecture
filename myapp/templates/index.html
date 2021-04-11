@@ -1,14 +1,18 @@
-{% extends "layouts/application.html" %} {% block title %}
+{% extends "layouts/application.html" %}
+{% block title %}
 <title>子ページ</title>
-{% endblock %} {% block body %}
+{% endblock %}
+{% block body %}
 <h1>This is a top page</h1>
-{% with messages = get_flashed_messages() %} {% if messages %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
 <ul class="flashes">
   {% for message in messages %}
   <li>{{ message }}</li>
   {% endfor %}
 </ul>
-{% endif %} {% endwith %}
+{% endif %}
+{% endwith %}
 <ul>
   <li>
     <a href="entry/index">entry</a>
