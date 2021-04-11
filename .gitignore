@@ -55,3 +55,4 @@ __pypackages__/
 dmypy.json
 
 .envrc
+test.sqlite3

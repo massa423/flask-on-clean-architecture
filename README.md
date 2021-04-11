@@ -36,3 +36,9 @@ docker run --name flask -d -p 10080:10080 flask:v0.1
 ```
 docker-compose up -d
 ```
+
+## lint
+
+```
+pysen run lint
+```
