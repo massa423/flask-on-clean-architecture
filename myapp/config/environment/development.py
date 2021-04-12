@@ -1,5 +1,6 @@
-from myapp.config.environment.default import *  # noqa
 from logging import DEBUG
+
+from myapp.config.environment.default import *  # noqa
 
 # database
 DATABASE_URL = "sqlite:///test.sqlite3"

@@ -1,6 +1,7 @@
-from myapp.config.environment.default import *  # noqa
-from logging import DEBUG
 import os
+from logging import DEBUG
+
+from myapp.config.environment.default import *  # noqa
 
 # database
 DATABASE_USER = os.getenv("DATABASE_USER", None)

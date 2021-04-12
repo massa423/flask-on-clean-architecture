@@ -1,20 +1,36 @@
-from flask import Flask, session, render_template, redirect, url_for, flash, abort, request, g
-from werkzeug.wrappers import Response
-from markupsafe import escape
-from myapp.routers import entry
-from myapp.config import config
-from myapp.logger.logger import Logger
 from logging import getLogger
-from myapp.libs.request_headers import RequestHeaders
+from typing import Tuple, Any
+
+from flask import (
+    Flask,
+    abort,
+    flash,
+    g,
+    redirect,
+    render_template,
+    request,
+    session,
+    url_for,
+)
+from flask.wrappers import Response as FlaskResponse
+from markupsafe import escape
+from myapp.config import config
 from myapp.interfaces.gateways.database.db import db_session
+from myapp.libs.request_headers import RequestHeaders
+from myapp.logger.logger import Logger
+from myapp.routers import entry
+from werkzeug.exceptions import NotFound, InternalServerError
+from werkzeug.wrappers import Response
 
 logger = getLogger(__name__)
 
 
-def before_action():
+def before_action() -> None:
     logger.info(f"request: {request.url}")
 
-    rh = RequestHeaders(host=request.headers.get("HOST"), user_agent=request.headers.get("USER_AGENT"))
+    rh = RequestHeaders(
+        host=request.headers.get("HOST"), user_agent=request.headers.get("USER_AGENT")
+    )
 
     # app.loggerで出力するとflask loggerのsetLevelが適用される。
     app.logger.debug(f"Host: {rh.host}, UserAgent: {rh.user_agent}")
@@ -27,12 +43,12 @@ def before_action():
     # return redirect('https://www.google.com')
 
 
-def after_action(response):
+def after_action(response) -> FlaskResponse:
     logger.info(f"status_code: {response._status_code}")
     return response
 
 
-def init_app():
+def init_app() -> Flask:
     """
     アプリ起動時、リロード時にしか呼ばれない
     """
@@ -88,21 +104,21 @@ def show_user_profile(username: str) -> str:
 
 
 @app.route("/server_error")
-def error_500():
+def error_500() -> Any:
     abort(500)
 
 
 @app.errorhandler(404)
 @app.errorhandler(405)
-def not_found(error):
+def not_found(error: NotFound) -> Tuple[str, int]:
     return render_template("404.html"), error.code
 
 
 @app.errorhandler(500)
-def internal_server_error(error):
+def internal_server_error(error: InternalServerError) -> Tuple[str, int]:
     return render_template("500.html"), error.code
 
 
 @app.teardown_appcontext
-def shutdown_session(exception=None):
+def shutdown_session(exception=None) -> None:
     db_session.remove()

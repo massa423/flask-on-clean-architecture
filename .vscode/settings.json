@@ -18,11 +18,11 @@
   "python.formatting.provider": "black",
   "python.formatting.blackPath": ".venv/bin/black",
   "python.linting.flake8Args": [
-    "--max-line-length=120",
+    "--max-line-length=88",
     "--ignore=E402",
     "--max-complexity=20"
   ],
   "python.formatting.blackArgs": [
-    "--line-length=120"
+    "--line-length=88"
   ],
 }

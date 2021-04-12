@@ -5,5 +5,5 @@ app = Flask(__name__)
 
 
 @app.cli.command("init-db")
-def init_db_from_cli():
+def init_db_from_cli() -> None:
     init_db()

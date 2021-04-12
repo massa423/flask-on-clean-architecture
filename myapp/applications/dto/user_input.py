@@ -1,5 +1,6 @@
-from pydantic import BaseModel, EmailStr, validator, Field, SecretStr
 import re
+
+from pydantic import BaseModel, EmailStr, Field, SecretStr, validator
 
 
 class UserInput(BaseModel):

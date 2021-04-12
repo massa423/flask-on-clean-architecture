@@ -1,11 +1,12 @@
-from logging import Formatter, getLogger, StreamHandler
-from flask import request, has_request_context
-from myapp.config import config
 import sys
+from logging import Formatter, StreamHandler, getLogger
+
+from flask import has_request_context, request
+from myapp.config import config
 
 
 class RequestFormatter(Formatter):
-    def format(self, record):
+    def format(self, record) -> str:
         if has_request_context():
             if request.headers.get("X-Forwarded-For"):
                 record.remote_addr = request.headers.get("X-Forwarded-For")
@@ -22,12 +23,14 @@ class Logger:
     ロガー
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         """
         ロガー初期化
         """
 
-        formatter = RequestFormatter("[%(asctime)s] %(remote_addr)s %(levelname)s: %(name)s(%(process)d): %(message)s")
+        formatter = RequestFormatter(
+            "[%(asctime)s] %(remote_addr)s %(levelname)s: %(name)s(%(process)d): %(message)s"  # noqa
+        )
 
         handler = StreamHandler(sys.stdout)
         handler.setFormatter(formatter)

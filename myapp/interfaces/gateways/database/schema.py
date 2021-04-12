@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Integer, String, DateTime
-from myapp.interfaces.gateways.database.db import Base
 from datetime import datetime
+
+from myapp.interfaces.gateways.database.db import Base
+from sqlalchemy import Column, DateTime, Integer, String
 
 
 class User(Base):
@@ -12,7 +13,14 @@ class User(Base):
     created_at = Column(DateTime, nullable=False)
     updated_at = Column(DateTime, nullable=False)
 
-    def __init__(self, name: str, password: str, email: str, created_at: datetime, updated_at: datetime):
+    def __init__(
+        self,
+        name: str,
+        password: str,
+        email: str,
+        created_at: datetime,
+        updated_at: datetime,
+    ):
         self.name = name
         self.password = password
         self.email = email

@@ -1,11 +1,12 @@
 from abc import ABCMeta, abstractmethod
-from myapp.domains.user import User as UserDomain
-from myapp.interfaces.gateways.database.db import db_session
-from myapp.interfaces.gateways.database.schema import User
-from myapp.exceptions import DuplicateException
-from sqlalchemy.exc import IntegrityError
 from datetime import datetime
 from logging import getLogger
+
+from myapp.domains.user import User as UserDomain
+from myapp.exceptions import DuplicateException
+from myapp.interfaces.gateways.database.db import db_session
+from myapp.interfaces.gateways.database.schema import User
+from sqlalchemy.exc import IntegrityError
 
 logger = getLogger(__name__)
 
@@ -21,7 +22,11 @@ class UserRepositoryImpl(UserRepository):
         now = datetime.now()
 
         data = User(
-            name=user.name, password=user.password.get_secret_value(), email=user.email, created_at=now, updated_at=now
+            name=user.name,
+            password=user.password.get_secret_value(),
+            email=user.email,
+            created_at=now,
+            updated_at=now,
         )
 
         try:
