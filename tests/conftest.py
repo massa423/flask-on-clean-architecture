@@ -1,20 +1,18 @@
 import os
-import tempfile
 
 import pytest
 
+from myapp.config import config
 from myapp.main import app
+from myapp.interfaces.gateways.database.db import init_db
 
 
 @pytest.fixture
 def client():
-    db_fd, app.app.config["DATABASE"] = tempfile.mkstemp()
-    app.app.config["TESTING"] = True
+    app.config["TESTING"] = True
 
-    with app.app.test_client() as client:
-        with app.app.app_context():
-            app.init_db()
+    with app.test_client() as client:
+        init_db()
         yield client
 
-    os.close(db_fd)
-    os.unlink(app.app.config["DATABASE"])
+    os.unlink(config.DATABASE_URL.replace("sqlite:///", ""))
