@@ -14,6 +14,7 @@ from flask import (
 )
 from flask.wrappers import Response as FlaskResponse
 from markupsafe import escape
+from myapp.api.v1 import user
 from myapp.config import config
 from myapp.interfaces.gateways.database.db import db_session
 from myapp.libs.request_headers import RequestHeaders
@@ -61,6 +62,7 @@ def init_app() -> Flask:
 
     # Bliueprint
     app.register_blueprint(entry.bp)
+    app.register_blueprint(user.bp)
 
     app.before_request(before_action)
     app.after_request(after_action)

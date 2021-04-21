@@ -40,3 +40,9 @@ class UserRepositoryImpl(UserRepository):
         logger.info(f"user create success: {response}")
 
         return UserDomain.from_orm(response)
+
+    def find_user_by_name(self, user: UserDomain) -> UserDomain:
+        response = User.query.filter(User.name == user.name).first()
+        logger.info(f"get user data: {response}")
+
+        return UserDomain.from_orm(response)

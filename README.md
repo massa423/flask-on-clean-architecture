@@ -1,3 +1,7 @@
+# Overview
+
+Flask Sample Application with Clean Architecture.
+
 
 ## DB初期化
 
@@ -35,6 +39,12 @@ docker run --name flask -d -p 10080:10080 flask:v0.1
 
 ```
 docker-compose up -d
+```
+
+## API
+
+```
+curl 127.0.0.1:5000/api/v1/users/<name>
 ```
 
 ## lint / format
