@@ -4,7 +4,7 @@ from typing import Union
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 from myapp.applications.dto.user_input import UserInput
 from myapp.exceptions import DuplicateException
-from myapp.injectors.usecase_injector import create_user_usecase_injector
+from myapp.injectors import create_user_usecase_injector
 from pydantic import ValidationError
 from werkzeug.wrappers.response import Response
 

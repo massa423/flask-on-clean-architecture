@@ -32,9 +32,7 @@ def before_action() -> None:
         host=request.headers.get("HOST"), user_agent=request.headers.get("USER_AGENT")
     )
 
-    # app.loggerで出力するとflask loggerのsetLevelが適用される。
     logger.debug(f"Host: {rh.host}, UserAgent: {rh.user_agent}")
-    logger.debug(f"config: {config.__repr__}")
 
     # リダイレクトも可能
     # return redirect('https://www.google.com')
@@ -65,6 +63,7 @@ def init_app() -> Flask:
 
     logger.debug("app initialized")
     logger.debug(f"URL Map: {app.url_map}")
+    logger.debug(f"config: {config.__dict__}")
 
     return app
 

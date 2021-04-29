@@ -3,7 +3,7 @@ from typing import Dict
 
 from myapp.applications.dto.user_input import UserInput
 from myapp.domains.user import User
-from myapp.injectors.repository_injector import user_repository_injector
+from myapp.injectors import user_repository_injector
 
 
 class CreateUserUsecase(metaclass=ABCMeta):
