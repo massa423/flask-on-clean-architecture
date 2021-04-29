@@ -4,7 +4,7 @@ from typing import Union
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 from myapp.applications.dto.user_input import UserInput
 from myapp.exceptions import DuplicateException
-from myapp.injectors import create_user_usecase_injector
+from myapp.injectors import user_create_usecase_injector
 from pydantic import ValidationError
 from werkzeug.wrappers.response import Response
 
@@ -49,6 +49,9 @@ def confirm() -> Union[str, Response]:
 
 @bp.route("done", methods=["POST"])
 def done() -> Union[str, Response]:
+    # inject
+    user_create_usecase = user_create_usecase_injector()
+
     input = UserInput(
         name=request.form["name"],
         password1=request.form["password"],
@@ -57,8 +60,9 @@ def done() -> Union[str, Response]:
     )
 
     logger.debug(f"input data: {input}")
+
     try:
-        response = create_user_usecase_injector().handle(input)
+        response = user_create_usecase.handle(input)
     except DuplicateException as e:
         logger.info(e)
         flash("you input data already registerd.")

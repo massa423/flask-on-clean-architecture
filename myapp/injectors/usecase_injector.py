@@ -1,13 +1,13 @@
-from myapp.applications.create_user_usecase import (
-    CreateUserUsecase,
-    CreateUserUsecaseImpl,
+from myapp.applications.user_create_usecase import (
+    UserCreateUsecase,
+    UserCreateUsecaseImpl,
 )
-from myapp.applications.get_user_usecase import GetUserUsecase, GetUserUsecaseImpl
+from myapp.applications.user_get_usecase import UserGetUsecase, UserGetUsecaseImpl
 
 
-def create_user_usecase_injector() -> CreateUserUsecase:
-    return CreateUserUsecaseImpl()
+def user_create_usecase_injector() -> UserCreateUsecase:
+    return UserCreateUsecaseImpl()
 
 
-def get_user_usecase_injector() -> GetUserUsecase:
-    return GetUserUsecaseImpl()
+def user_get_usecase_injector() -> UserGetUsecase:
+    return UserGetUsecaseImpl()

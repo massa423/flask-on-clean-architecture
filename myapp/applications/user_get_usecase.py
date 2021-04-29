@@ -5,14 +5,15 @@ from myapp.domains.user import User
 from myapp.injectors import user_repository_injector
 
 
-class GetUserUsecase(metaclass=ABCMeta):
+class UserGetUsecase(metaclass=ABCMeta):
     @abstractmethod
     def handle(self, name: str) -> Dict[str, Any]:
         pass
 
 
-class GetUserUsecaseImpl(GetUserUsecase):
+class UserGetUsecaseImpl(UserGetUsecase):
     def __init__(self) -> None:
+        # inject
         self.user_repository = user_repository_injector()
 
     def handle(self, name: str) -> Dict[str, Any]:
