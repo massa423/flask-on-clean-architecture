@@ -3,7 +3,7 @@
 Flask Sample Application with Clean Architecture.
 
 
-## DB初期化
+## initialize DB
 
 ```
 export FLASK_APP=myapp/cli.py

@@ -5,7 +5,6 @@ from flask import (
     Flask,
     abort,
     flash,
-    g,
     redirect,
     render_template,
     request,
@@ -19,7 +18,7 @@ from myapp.config import config
 from myapp.interfaces.gateways.database.db import db_session
 from myapp.libs.request_headers import RequestHeaders
 from myapp.logger.logger import Logger
-from myapp.routers import entry
+from myapp.routers import signup
 from werkzeug.exceptions import NotFound, InternalServerError
 from werkzeug.wrappers import Response
 
@@ -27,18 +26,15 @@ logger = getLogger(__name__)
 
 
 def before_action() -> None:
-    logger.info(f"request: {request.url}")
+    logger.info(f"request({request.method}): {request.url}")
 
     rh = RequestHeaders(
         host=request.headers.get("HOST"), user_agent=request.headers.get("USER_AGENT")
     )
 
     # app.loggerで出力するとflask loggerのsetLevelが適用される。
-    app.logger.debug(f"Host: {rh.host}, UserAgent: {rh.user_agent}")
-    app.logger.debug(f"DATABASE_URL: {config.DATABASE_URL}")
-
-    # リクエスト時にはinit_appを通らないのでこれはコケる
-    # getLogger(__name__).info(g.what_time)
+    logger.debug(f"Host: {rh.host}, UserAgent: {rh.user_agent}")
+    logger.debug(f"config: {config.__repr__}")
 
     # リダイレクトも可能
     # return redirect('https://www.google.com')
@@ -61,21 +57,15 @@ def init_app() -> Flask:
     app.secret_key = config.SECRET_KEY
 
     # Bliueprint
-    app.register_blueprint(entry.bp)
+    app.register_blueprint(signup.bp)
     app.register_blueprint(user.bp)
 
     app.before_request(before_action)
     app.after_request(after_action)
 
-    # リクエスト時にはapp_contextが存在しない？
-    # なのでapp_contectを入れないと怒られる。
-    with app.app_context():
-        from datetime import datetime
+    logger.debug("app initialized")
+    logger.debug(f"URL Map: {app.url_map}")
 
-        g.what_time = datetime.now()
-        logger.info(f"init: {g.what_time}")
-
-    logger.info("app initialized")
     return app
 
 
@@ -100,7 +90,7 @@ def show_user_profile(username: str) -> str:
     """セッションのテスト"""
     if username not in session:
         session["username"] = username
-        logger.info(f"session add username: {username}")
+        logger.debug(f"session add username: {username}")
 
     return "User %s" % escape(username)
 

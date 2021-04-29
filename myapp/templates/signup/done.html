@@ -1,0 +1,34 @@
+{% extends "layouts/application.html" %}
+{% block title %}
+<title>Signup done</title>
+{% endblock %}
+{% block body %}
+<nav class="navbar fixed-top navbar-dark bg-dark">This is a signup page</nav>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<p class="{{ category }}">{{ message }}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<h1>Done!!</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">key</th>
+      <th scope="col">value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for k, v in response.items() %}
+    <tr>
+      <th scope="row">{{ loop.index }}</th>
+      <td>{{ k }}</td>
+      <td>{{ v }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a href="{{ url_for('signup.index') }}">[back]</a>
+{% endblock %}

@@ -30,6 +30,6 @@ def test_repository(client):
     assert u.email == response.email
 
 
-def test_repository_I(client):
+def test_repository_interface(client):
     with pytest.raises(TypeError):
         UserRepository()

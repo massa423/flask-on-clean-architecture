@@ -1,6 +1,6 @@
 {% extends "layouts/application.html" %}
 {% block title %}
-<title>子ページ</title>
+<title>Top Page</title>
 {% endblock %}
 {% block body %}
 <h1>This is a top page</h1>
@@ -15,14 +15,13 @@
 {% endwith %}
 <ul>
   <li>
-    <a href="entry/index">entry</a>
+    <a href="{{ url_for('signup.index') }}">signup</a>
   </li>
   <li>
-    <a href="redirect">redirect</a>
+    <a href="{{ url_for('redirect_to_index') }}">redirect</a>
   </li>
   <li>
-    <a href="/">top</a>
+    <a href="{{ url_for('index') }}">top</a>
   </li>
-  <li>{{ g.name }}</li>
 </ul>
 {% endblock %}

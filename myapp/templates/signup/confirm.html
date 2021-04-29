@@ -1,0 +1,40 @@
+{% extends "layouts/application.html" %}
+{% block title %}
+<title>Signup confirm</title>
+{% endblock %}
+{% block body %}
+<nav class="navbar fixed-top navbar-dark bg-dark">This is a signup page</nav>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<p class="{{ category }}">{{ message }}</p>
+{% endfor %}
+{% endif %}
+{% endwith %}
+<h1>Confirm</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">key</th>
+      <th scope="col">value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for k, v in input.items() %}
+    <tr>
+      <th scope="row">{{ loop.index }}</th>
+      <td>{{ k }}</td>
+      <td>{{ v }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<form action="done" method="post">
+  <input type="hidden" name="name" value="{{ input.name }}">
+  <input type="hidden" name="password" value="{{ password }}">
+  <input type="hidden" name="email" value="{{ input.email }}">
+  <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+</form>
+<a href="{{ url_for('signup.index') }}">[back]</a>
+{% endblock %}

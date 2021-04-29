@@ -1,9 +1,9 @@
 {% extends "layouts/application.html" %}
 {% block title %}
-<title>Entry</title>
+<title>Signup</title>
 {% endblock %}
 {% block body %}
-<nav class="navbar fixed-top navbar-dark bg-dark">This is a entry page</nav>
+<nav class="navbar fixed-top navbar-dark bg-dark">This is a signup page</nav>
 {% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
 {% for category, message in messages %}
@@ -42,10 +42,10 @@
       <label class="form-check-label" for="exampleCheck2">Check me out2</label>
     </div>
     <div class="mb-3">
-      <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" id="submit" class="btn btn-primary">Confirm</button>
     </div>
   </form>
-  <a href="/">[back to index]</a>
+  <a href="{{ url_for('index') }}">[Back to top page]</a>
 </div>
 {% endblock %}
 {% block javascript %}

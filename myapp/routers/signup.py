@@ -10,15 +10,13 @@ from werkzeug.wrappers.response import Response
 
 logger = getLogger(__name__)
 
-bp = Blueprint("entry", __name__, url_prefix="/entry")
+bp = Blueprint("signup", __name__, url_prefix="/signup")
 
 
 @bp.route("/")
 @bp.route("index")
 def index() -> str:
-    # g.name = "global name test"
-
-    return render_template("entry/index.html")
+    return render_template("signup/index.html")
 
 
 @bp.route("confirm", methods=["POST"])
@@ -40,10 +38,10 @@ def confirm() -> Union[str, Response]:
         for m in msg:
             flash(m)
 
-        return redirect(url_for("entry.index"))
+        return redirect(url_for("signup.index"))
 
     return render_template(
-        "entry/confirm.html",
+        "signup/confirm.html",
         input=input.dict(exclude={"password"}),
         password=input.password1.get_secret_value(),
     )
@@ -64,6 +62,6 @@ def done() -> Union[str, Response]:
     except DuplicateException as e:
         logger.info(e)
         flash("you input data already registerd.")
-        return redirect(url_for("entry.index"))
+        return redirect(url_for("signup.index"))
 
-    return render_template("entry/done.html", response=response)
+    return render_template("signup/done.html", response=response)
