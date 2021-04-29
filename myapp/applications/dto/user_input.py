@@ -1,4 +1,5 @@
 import re
+from typing import Any, Dict
 
 from pydantic import BaseModel, EmailStr, Field, SecretStr, validator
 
@@ -10,13 +11,13 @@ class UserInput(BaseModel):
     email: EmailStr = Field(...)
 
     @validator("name", allow_reuse=True)
-    def check_name(cls, v):
+    def check_name(cls, v: str) -> str:
         if not re.match(r"^[a-zA-Z0-9-_]+$", v):
             raise ValueError("invalid name")
         return v
 
     @validator("password2", allow_reuse=True)
-    def passwords_match(cls, v, values, **kwargs):
+    def passwords_match(cls, v: str, values: Dict[str, Any], **kwargs: str) -> str:
         if "password1" in values and v != values["password1"]:
             raise ValueError("passwords do not match")
         return v

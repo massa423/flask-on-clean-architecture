@@ -1,6 +1,6 @@
-from myapp.interfaces.gateways.user_repository import UserRepositoryImpl, UserRepository
-from myapp.domains.user import User
 import pytest
+from myapp.domains.user import User
+from myapp.interfaces.gateways.user_repository import UserRepository, UserRepositoryImpl
 
 
 def test_empty_db(client):

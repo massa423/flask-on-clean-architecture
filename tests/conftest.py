@@ -1,10 +1,9 @@
 import os
 
 import pytest
-
 from myapp.config import config
-from myapp.main import app
 from myapp.interfaces.gateways.database.db import init_db
+from myapp.main import app
 
 
 @pytest.fixture

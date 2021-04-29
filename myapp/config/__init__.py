@@ -1,11 +1,12 @@
 import os
+from typing import Any
 
 DEVELOPMENT = "development"
 STAGING = "staging"
 PRODUCTION = "production"
 TEST = "test"
 
-
+config: Any
 env = os.getenv("APP_ENV", DEVELOPMENT)
 
 if env == DEVELOPMENT:

@@ -1,5 +1,5 @@
 from logging import getLogger
-from typing import Tuple, Any
+from typing import Any, Tuple
 
 from flask import (
     Flask,
@@ -11,7 +11,7 @@ from flask import (
     session,
     url_for,
 )
-from flask.wrappers import Response as FlaskResponse
+from flask.wrappers import Response
 from markupsafe import escape
 from myapp.api.v1 import user
 from myapp.config import config
@@ -19,8 +19,8 @@ from myapp.interfaces.gateways.database.db import db_session
 from myapp.libs.request_headers import RequestHeaders
 from myapp.logger.logger import Logger
 from myapp.routers import signup
-from werkzeug.exceptions import NotFound, InternalServerError
-from werkzeug.wrappers import Response
+from werkzeug.exceptions import InternalServerError, NotFound
+from werkzeug.wrappers import Response as WerkzeugResponse
 
 logger = getLogger(__name__)
 
@@ -38,8 +38,8 @@ def before_action() -> None:
     # return redirect('https://www.google.com')
 
 
-def after_action(response) -> FlaskResponse:
-    logger.info(f"status_code: {response._status_code}")
+def after_action(response: Response) -> Response:
+    logger.info(f"status_code: {response.status_code}")
     return response
 
 
@@ -79,7 +79,7 @@ def index() -> str:
 
 
 @app.route("/redirect")
-def redirect_to_index() -> Response:
+def redirect_to_index() -> WerkzeugResponse:
     """リダイレクトとflashのテスト"""
     flash("redirect from /redirect")
     return redirect(url_for("index"))
@@ -112,5 +112,5 @@ def internal_server_error(error: InternalServerError) -> Tuple[str, int]:
 
 
 @app.teardown_appcontext
-def shutdown_session(exception=None) -> None:
+def shutdown_session(exception: Any = None) -> None:
     db_session.remove()

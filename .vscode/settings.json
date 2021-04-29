@@ -25,4 +25,14 @@
   "python.formatting.blackArgs": [
     "--line-length=88"
   ],
+  "python.linting.mypyArgs": [
+    "--ignore-missing-imports",
+    "--follow-imports=silent",
+    "--show-column-numbers",
+    "--strict",
+    "--exclude 'tests/'"
+  ],
+  "python.analysis.disabled": [
+    "no-self-argument"
+  ],
 }

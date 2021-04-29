@@ -1,12 +1,14 @@
 import sys
 from logging import Formatter, StreamHandler, getLogger
+from typing import Any
 
 from flask import has_request_context, request
 from myapp.config import config
 
 
 class RequestFormatter(Formatter):
-    def format(self, record) -> str:
+    def format(self, record: Any) -> str:
+        print(type(record))
         if has_request_context():
             if request.headers.get("X-Forwarded-For"):
                 record.remote_addr = request.headers.get("X-Forwarded-For")
