@@ -3,7 +3,7 @@
 <title>Entry</title>
 {% endblock %}
 {% block body %}
-<h1>This is a entry page</h1>
+<nav class="navbar fixed-top navbar-dark bg-dark">This is a entry page</nav>
 {% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
 {% for category, message in messages %}
@@ -11,38 +11,45 @@
 {% endfor %}
 {% endif %}
 {% endwith %}
-<form action="confirm" method="post" id="myform">
-  <div class="mb-3">
-    <label for="name" class="form-label">Name</label>
-    <input type="text" name="name" class="form-control" id="name">
-  </div>
-  <div class="mb-3">
-    <label for="password1" class="form-label">Password</label>
-    <input type="password" name="password1" class="form-control" id="password1">
-  </div>
-  <div class="mb-3">
-    <label for="password2" class="form-label">Password(confirm)</label>
-    <input type="password" name="password2" class="form-control" id="password2">
-  </div>
-  <div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Email address</label>
-    <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck2">
-    <label class="form-check-label" for="exampleCheck2">Check me out2</label>
-  </div>
-  <button type="submit" id="submit" class="btn btn-primary">Submit</button>
-</form>
-<a href="/">[back to index]</a>
-
+<div class="mt-5 w-50">
+  <form action="confirm" method="post" id="myform">
+    <div class="mb-3 form-group row">
+      <label for="name" class="col-sm-2 col-form-label">Name</label>
+      <div class="col-sm-10">
+        <input type="text" name="name" class="form-control is-valid" id="name">
+        <div class="valid-feedback">OK</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="password1" class="form-label">Password</label>
+      <input type="password" name="password1" class="form-control" id="password1">
+    </div>
+    <div class="mb-3">
+      <label for="password2" class="form-label">Password(confirm)</label>
+      <input type="password" name="password2" class="form-control" id="password2">
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Email address</label>
+      <input type="email" name="email" class="form-control" id="exampleFormControlInput1"
+        placeholder="name@example.com">
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck2">
+      <label class="form-check-label" for="exampleCheck2">Check me out2</label>
+    </div>
+    <div class="mb-3">
+      <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+  <a href="/">[back to index]</a>
+</div>
 {% endblock %}
 {% block javascript %}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 {% endblock %}
