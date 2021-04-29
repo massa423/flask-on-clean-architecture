@@ -63,7 +63,8 @@ def init_app() -> Flask:
 
     logger.debug("app initialized")
     logger.debug(f"URL Map: {app.url_map}")
-    logger.debug(f"config: {config.__dict__}")
+    logger.debug(f"app.config: {app.config}")
+    logger.debug(f"config: {config.dict()}")
 
     return app
 
