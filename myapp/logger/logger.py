@@ -8,7 +8,7 @@ from myapp.config import config
 
 class RequestFormatter(Formatter):
     def format(self, record: Any) -> str:
-        if has_request_context():
+        if has_request_context():  # type: ignore
             if request.headers.get("X-Forwarded-For"):
                 record.remote_addr = request.headers.get("X-Forwarded-For")
             else:

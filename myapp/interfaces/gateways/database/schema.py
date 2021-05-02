@@ -4,7 +4,7 @@ from myapp.interfaces.gateways.database.db import Base
 from sqlalchemy import Column, DateTime, Integer, String
 
 
-class User(Base):
+class User(Base):  # type: ignore
     __tablename__ = "users"
     no = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(50), nullable=False, unique=True)

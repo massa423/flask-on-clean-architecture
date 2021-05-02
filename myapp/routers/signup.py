@@ -2,7 +2,7 @@ from logging import getLogger
 from typing import Union
 
 from flask import Blueprint, flash, redirect, render_template, request, url_for
-from myapp.applications.dto.user_input import UserInput
+from myapp.applications.inbound_dto.user_input import UserInput
 from myapp.exceptions import DuplicateException
 from myapp.injectors import user_create_usecase_injector
 from pydantic import ValidationError
@@ -68,4 +68,4 @@ def done() -> Union[str, Response]:
         flash("you input data already registerd.")
         return redirect(url_for("signup.index"))
 
-    return render_template("signup/done.html", response=response)
+    return render_template("signup/done.html", response=response.dict())
