@@ -16,6 +16,10 @@ class UserRepository(metaclass=ABCMeta):
     def create_user(self, user: UserDomain) -> UserDomain:
         pass
 
+    @abstractmethod
+    def find_user_by_name(self, user: UserDomain) -> UserDomain:
+        pass
+
 
 class UserRepositoryImpl(UserRepository):
     def create_user(self, user: UserDomain) -> UserDomain:

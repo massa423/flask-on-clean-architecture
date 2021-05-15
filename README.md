@@ -53,3 +53,10 @@ curl 127.0.0.1:5000/api/v1/users/<name>
 pysen run lint
 pysen run format
 ```
+
+## test
+
+```
+export APP_ENV=test
+pytest -v --cov=myapp
+```

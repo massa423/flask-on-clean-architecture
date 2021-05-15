@@ -35,4 +35,7 @@
   "python.analysis.disabled": [
     "no-self-argument"
   ],
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}/.venv/bin"
+  ],
 }

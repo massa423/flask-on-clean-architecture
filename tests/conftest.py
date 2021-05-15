@@ -2,11 +2,11 @@ import os
 
 import pytest
 from myapp.config import config
-from myapp.interfaces.gateways.database.db import init_db
+from myapp.interfaces.gateways.database.db import db_session, init_db
 from myapp.main import app
 
 
-@pytest.fixture
+@pytest.fixture(scope="function")
 def client():
     app.config["TESTING"] = True
 
@@ -14,4 +14,5 @@ def client():
         init_db()
         yield client
 
+    db_session.remove()
     os.unlink(config.DATABASE_URL.replace("sqlite:///", ""))
