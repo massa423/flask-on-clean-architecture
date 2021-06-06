@@ -4,7 +4,7 @@ EXPOSE 10080
 WORKDIR /app
 
 RUN apt-get update && \
-  apt-get install -y --no-install-recommends gcc libc-dev \
+  apt-get install -y --no-install-recommends gcc libc-dev libpq-dev \
   procps iproute2 && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 

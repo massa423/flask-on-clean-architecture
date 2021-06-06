@@ -1,0 +1,14 @@
+FROM python:3.9.4-buster
+
+WORKDIR /opt
+ENV POETRY_HOME="/opt/poetry"
+
+RUN apt-get update && \
+  apt-get install -y --no-install-recommends gcc libc-dev libpq-dev \
+  procps iproute2 && \
+  rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+COPY poetry.lock pyproject.toml ./
+RUN curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python && \
+  $POETRY_HOME/bin/poetry config virtualenvs.create false && \
+  $POETRY_HOME/bin/poetry install
