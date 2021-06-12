@@ -13,6 +13,8 @@ Flask-SQLAlchemy = "^2.5.1"
 pydantic = "^1.8.1"
 email-validator = "^1.1.2"
 psycopg2 = "^2.8.6"
+injector = "^0.18.4"
+Flask-Injector = "^0.12.3"
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.812"

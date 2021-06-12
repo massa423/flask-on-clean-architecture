@@ -11,10 +11,13 @@ from flask import (
     session,
     url_for,
 )
+from flask_injector import FlaskInjector
 from flask.wrappers import Response
 from markupsafe import escape
 from myapp.api.v1 import user
 from myapp.config import config
+from myapp.dependencies.repository_deps import RepositoryDIModule
+from myapp.dependencies.usecase_deps import UsecaseDIModule
 from myapp.interfaces.gateways.database.db import db_session
 from myapp.libs.request_headers import RequestHeaders
 from myapp.logger.logger import Logger
@@ -60,6 +63,8 @@ def init_app() -> Flask:
 
     app.before_request(before_action)
     app.after_request(after_action)
+
+    FlaskInjector(app=app, modules=[UsecaseDIModule(), RepositoryDIModule()])
 
     logger.debug("app initialized")
     logger.debug(f"URL Map: {app.url_map}")

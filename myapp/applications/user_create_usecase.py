@@ -1,9 +1,10 @@
 from abc import ABCMeta, abstractmethod
 
+from injector import inject
 from myapp.applications.inbound_dto.user_input import UserInput
 from myapp.applications.outbound_dto.user_output import UserOutput
 from myapp.domains.user import User
-from myapp.injectors import user_repository_injector
+from myapp.interfaces.gateways.user_repository import UserRepository
 
 
 class UserCreateUsecase(metaclass=ABCMeta):
@@ -13,9 +14,9 @@ class UserCreateUsecase(metaclass=ABCMeta):
 
 
 class UserCreateUsecaseImpl(UserCreateUsecase):
-    def __init__(self) -> None:
-        # inject
-        self.user_repository = user_repository_injector()
+    @inject
+    def __init__(self, user_repository: UserRepository) -> None:
+        self.user_repository = user_repository
 
     def handle(self, input: UserInput) -> UserOutput:
         data = User(name=input.name, password=input.password1, email=input.email)

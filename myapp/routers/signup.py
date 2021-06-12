@@ -2,9 +2,10 @@ from logging import getLogger
 from typing import Union
 
 from flask import Blueprint, flash, redirect, render_template, request, url_for
+from injector import inject
 from myapp.applications.inbound_dto.user_input import UserInput
+from myapp.applications.user_create_usecase import UserCreateUsecase
 from myapp.exceptions import DuplicateException
-from myapp.injectors import user_create_usecase_injector
 from pydantic import ValidationError
 from werkzeug.wrappers.response import Response
 
@@ -47,10 +48,9 @@ def confirm() -> Union[str, Response]:
     )
 
 
+@inject
 @bp.route("done", methods=["POST"])
-def done() -> Union[str, Response]:
-    # inject
-    user_create_usecase = user_create_usecase_injector()
+def done(user_create_usecase: UserCreateUsecase) -> Union[str, Response]:
 
     input = UserInput(
         name=request.form["name"],
@@ -58,7 +58,6 @@ def done() -> Union[str, Response]:
         password2=request.form["password"],
         email=request.form["email"],
     )
-
     logger.debug(f"input data: {input}")
 
     try:
