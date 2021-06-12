@@ -11,7 +11,7 @@ Flask Sample Application on Clean Architecture.
 ## initialize DB
 
 ```
-export FLASK_APP=myapp/cli.py
+export FLASK_APP=app/cli.py
 export APP_ENV=development
 flask init-db
 ```
@@ -63,5 +63,5 @@ pysen run format
 
 ```
 export APP_ENV=test
-pytest -v --cov=myapp
+pytest -v --cov=app
 ```

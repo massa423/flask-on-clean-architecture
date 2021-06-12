@@ -10,18 +10,18 @@ config: Any
 env = os.getenv("APP_ENV", DEVELOPMENT)
 
 if env == DEVELOPMENT:
-    from myapp.config.environment.development import DevelopmentConfig
+    from app.config.environment.development import DevelopmentConfig
 
     config = DevelopmentConfig()
 elif env == STAGING:
-    from myapp.config.environment.staging import StagingConfig
+    from app.config.environment.staging import StagingConfig
 
     config = StagingConfig()
 elif env == PRODUCTION:
-    from myapp.config.environment.production import ProductionConfig
+    from app.config.environment.production import ProductionConfig
 
     config = ProductionConfig()
 elif env == TEST:
-    from myapp.config.environment.test import TestConfig
+    from app.config.environment.test import TestConfig
 
     config = TestConfig()

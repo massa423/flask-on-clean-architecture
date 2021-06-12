@@ -2,10 +2,10 @@ from abc import ABCMeta, abstractmethod
 from datetime import datetime
 from logging import getLogger
 
-from myapp.domains.user import User as UserDomain
-from myapp.exceptions import DuplicateException
-from myapp.interfaces.gateways.database.db import db_session
-from myapp.interfaces.gateways.database.schema import User
+from app.domains.user import User as UserDomain
+from app.exceptions import DuplicateException
+from app.interfaces.gateways.database.db import db_session
+from app.interfaces.gateways.database.schema import User
 from sqlalchemy.exc import IntegrityError
 
 logger = getLogger(__name__)

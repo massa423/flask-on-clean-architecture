@@ -12,7 +12,7 @@ COPY poetry.lock pyproject.toml uwsgi.ini ./
 RUN pip install poetry==1.1.5 && \
   poetry install --no-dev
 
-COPY myapp/ ./myapp/
+COPY app/ ./app/
 
 ENTRYPOINT [ "poetry" ]
 CMD [ "run", "uwsgi", "--ini", "uwsgi.ini" ]

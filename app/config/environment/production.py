@@ -1,7 +1,7 @@
 import os
 from logging import INFO
 
-from myapp.config.environment.default import DefaultConfig
+from app.config.environment.default import DefaultConfig
 
 
 class ProductionConfig(DefaultConfig):

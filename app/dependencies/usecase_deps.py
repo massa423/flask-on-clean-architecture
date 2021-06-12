@@ -1,9 +1,9 @@
 from injector import Module
-from myapp.applications.user_create_usecase import (
+from app.applications.user_create_usecase import (
     UserCreateUsecase,
     UserCreateUsecaseImpl,
 )
-from myapp.applications.user_get_usecase import UserGetUsecase, UserGetUsecaseImpl
+from app.applications.user_get_usecase import UserGetUsecase, UserGetUsecaseImpl
 
 
 class UsecaseDIModule(Module):

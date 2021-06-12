@@ -1,7 +1,7 @@
 import pytest
-from myapp.domains.user import User
-from myapp.exceptions import DuplicateException
-from myapp.interfaces.gateways.user_repository import UserRepository, UserRepositoryImpl
+from app.domains.user import User
+from app.exceptions import DuplicateException
+from app.interfaces.gateways.user_repository import UserRepository, UserRepositoryImpl
 
 
 class TestRepostory:

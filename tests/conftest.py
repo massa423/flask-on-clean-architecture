@@ -1,9 +1,9 @@
 import os
 
 import pytest
-from myapp.config import config
-from myapp.interfaces.gateways.database.db import db_session, init_db
-from myapp.main import app
+from app.config import config
+from app.interfaces.gateways.database.db import db_session, init_db
+from app.main import app
 
 
 @pytest.fixture(scope="function")

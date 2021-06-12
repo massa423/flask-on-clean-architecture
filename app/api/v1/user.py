@@ -3,7 +3,7 @@ from typing import Any
 
 from flask import Blueprint, jsonify
 from injector import inject
-from myapp.applications.user_get_usecase import UserGetUsecase
+from app.applications.user_get_usecase import UserGetUsecase
 
 logger = getLogger(__name__)
 

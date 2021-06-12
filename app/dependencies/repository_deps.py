@@ -1,5 +1,5 @@
 from injector import Module
-from myapp.interfaces.gateways.user_repository import UserRepository, UserRepositoryImpl
+from app.interfaces.gateways.user_repository import UserRepository, UserRepositoryImpl
 
 
 class RepositoryDIModule(Module):

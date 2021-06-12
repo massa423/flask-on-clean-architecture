@@ -3,9 +3,9 @@ from typing import Union
 
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 from injector import inject
-from myapp.applications.inbound_dto.user_input import UserInput
-from myapp.applications.user_create_usecase import UserCreateUsecase
-from myapp.exceptions import DuplicateException
+from app.applications.inbound_dto.user_input import UserInput
+from app.applications.user_create_usecase import UserCreateUsecase
+from app.exceptions import DuplicateException
 from pydantic import ValidationError
 from werkzeug.wrappers.response import Response
 

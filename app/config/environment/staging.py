@@ -1,7 +1,7 @@
 import os
 from logging import DEBUG
 
-from myapp.config.environment.default import DefaultConfig
+from app.config.environment.default import DefaultConfig
 
 
 class StagingConfig(DefaultConfig):

@@ -1,5 +1,5 @@
 from flask import Flask
-from myapp.interfaces.gateways.database.db import init_db
+from app.interfaces.gateways.database.db import init_db
 
 app = Flask(__name__)
 

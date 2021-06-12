@@ -1,4 +1,4 @@
-from myapp.config import config
+from app.config import config
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -14,6 +14,6 @@ Base.query = db_session.query_property()
 
 
 def init_db() -> None:
-    import myapp.interfaces.gateways.database.schema  # noqa
+    import app.interfaces.gateways.database.schema  # noqa
 
     Base.metadata.create_all(bind=engine)

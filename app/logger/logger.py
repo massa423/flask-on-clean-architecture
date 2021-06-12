@@ -3,7 +3,7 @@ from logging import Formatter, StreamHandler, getLogger
 from typing import Any
 
 from flask import has_request_context, request
-from myapp.config import config
+from app.config import config
 
 
 class RequestFormatter(Formatter):

@@ -1,10 +1,10 @@
 from abc import ABCMeta, abstractmethod
 
 from injector import inject
-from myapp.applications.inbound_dto.user_input import UserInput
-from myapp.applications.outbound_dto.user_output import UserOutput
-from myapp.domains.user import User
-from myapp.interfaces.gateways.user_repository import UserRepository
+from app.applications.inbound_dto.user_input import UserInput
+from app.applications.outbound_dto.user_output import UserOutput
+from app.domains.user import User
+from app.interfaces.gateways.user_repository import UserRepository
 
 
 class UserCreateUsecase(metaclass=ABCMeta):

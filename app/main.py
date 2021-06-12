@@ -14,14 +14,14 @@ from flask import (
 from flask_injector import FlaskInjector
 from flask.wrappers import Response
 from markupsafe import escape
-from myapp.api.v1 import user
-from myapp.config import config
-from myapp.dependencies.repository_deps import RepositoryDIModule
-from myapp.dependencies.usecase_deps import UsecaseDIModule
-from myapp.interfaces.gateways.database.db import db_session
-from myapp.libs.request_headers import RequestHeaders
-from myapp.logger.logger import Logger
-from myapp.routers import signup
+from app.api.v1 import user
+from app.config import config
+from app.dependencies.repository_deps import RepositoryDIModule
+from app.dependencies.usecase_deps import UsecaseDIModule
+from app.interfaces.gateways.database.db import db_session
+from app.libs.request_headers import RequestHeaders
+from app.logger.logger import Logger
+from app.routers import signup
 from werkzeug.exceptions import InternalServerError, NotFound
 from werkzeug.wrappers import Response as WerkzeugResponse
 
