@@ -1,8 +1,13 @@
 # Overview
 
-Flask Sample Application with Clean Architecture.
+Flask Sample Application on Clean Architecture.
 
 
+# Requirements
+
+* Python 3.9
+
+# How to use
 ## initialize DB
 
 ```
@@ -11,22 +16,22 @@ export APP_ENV=development
 flask init-db
 ```
 
-## アプリケーション起動
+## Application launch
 
 ### development
-#### Flask直接起動
+#### a. flask run
 
 ```
 ./run.sh
 ```
 
-#### uwsgiで起動
+#### b. uWSGI
 
 ```
 uwsgi --ini uwsgi.ini
 ```
 
-#### Dockerで起動
+#### c. Docker
 
 ```
 docker build . -f Dockerfile.flask -t flask:v0.1
