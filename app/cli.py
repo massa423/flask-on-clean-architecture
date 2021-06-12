@@ -1,5 +1,5 @@
-from flask import Flask
 from app.interfaces.gateways.database.db import init_db
+from flask import Flask
 
 app = Flask(__name__)
 

@@ -1,9 +1,9 @@
 from logging import getLogger
 from typing import Any
 
+from app.applications.user_get_usecase import UserGetUsecase
 from flask import Blueprint, jsonify
 from injector import inject
-from app.applications.user_get_usecase import UserGetUsecase
 
 logger = getLogger(__name__)
 

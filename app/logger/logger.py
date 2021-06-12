@@ -2,8 +2,8 @@ import sys
 from logging import Formatter, StreamHandler, getLogger
 from typing import Any
 
-from flask import has_request_context, request
 from app.config import config
+from flask import has_request_context, request
 
 
 class RequestFormatter(Formatter):

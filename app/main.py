@@ -1,6 +1,14 @@
 from logging import getLogger
 from typing import Any, Tuple
 
+from app.api.v1 import user
+from app.config import config
+from app.dependencies.repository_deps import RepositoryDIModule
+from app.dependencies.usecase_deps import UsecaseDIModule
+from app.interfaces.gateways.database.db import db_session
+from app.libs.request_headers import RequestHeaders
+from app.logger.logger import Logger
+from app.routers import signup
 from flask import (
     Flask,
     abort,
@@ -11,17 +19,9 @@ from flask import (
     session,
     url_for,
 )
-from flask_injector import FlaskInjector
 from flask.wrappers import Response
+from flask_injector import FlaskInjector
 from markupsafe import escape
-from app.api.v1 import user
-from app.config import config
-from app.dependencies.repository_deps import RepositoryDIModule
-from app.dependencies.usecase_deps import UsecaseDIModule
-from app.interfaces.gateways.database.db import db_session
-from app.libs.request_headers import RequestHeaders
-from app.logger.logger import Logger
-from app.routers import signup
 from werkzeug.exceptions import InternalServerError, NotFound
 from werkzeug.wrappers import Response as WerkzeugResponse
 
