@@ -27,7 +27,7 @@ class UserRepositoryImpl(UserRepository):
 
         data = User(
             name=user.name,
-            password=user.password.get_secret_value(),
+            password=user.get_raw_password(),
             email=user.email,
             created_at=now,
             updated_at=now,

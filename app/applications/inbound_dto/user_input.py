@@ -21,3 +21,6 @@ class UserInput(BaseModel):
         if "password1" in values and v != values["password1"]:
             raise ValueError("passwords do not match")
         return v
+
+    def get_raw_password(self) -> str:
+        return self.password1.get_secret_value()

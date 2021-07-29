@@ -12,3 +12,6 @@ class User(BaseModel):
 
     class Config:
         orm_mode = True
+
+    def get_raw_password(self) -> str:
+        return self.password.get_secret_value()

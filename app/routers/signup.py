@@ -44,7 +44,7 @@ def confirm() -> Union[str, Response]:
     return render_template(
         "signup/confirm.html",
         input=input.dict(exclude={"password"}),
-        password=input.password1.get_secret_value(),
+        password=input.get_raw_password(),
     )
 
 
