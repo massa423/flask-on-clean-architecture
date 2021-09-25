@@ -15,4 +15,4 @@ def client():
         yield client
 
     db_session.remove()
-    os.unlink(config.DATABASE_URL.replace("sqlite:///", ""))
+    os.unlink(config().DATABASE_URL.replace("sqlite:///", ""))

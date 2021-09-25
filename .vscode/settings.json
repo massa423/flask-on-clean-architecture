@@ -20,7 +20,8 @@
   "python.linting.flake8Args": [
     "--max-line-length=88",
     "--ignore=E402",
-    "--max-complexity=20"
+    "--max-complexity=20",
+    "--exclude=tests/*"
   ],
   "python.formatting.blackArgs": [
     "--line-length=88"

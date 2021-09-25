@@ -55,7 +55,7 @@ def init_app() -> Flask:
     app = Flask(__name__)
 
     # flask環境変数指定
-    app.secret_key = config.SECRET_KEY
+    app.secret_key = config().SECRET_KEY
 
     # Bliueprint
     app.register_blueprint(signup.bp)
@@ -69,7 +69,7 @@ def init_app() -> Flask:
     logger.debug("app initialized")
     logger.debug(f"URL Map: {app.url_map}")
     logger.debug(f"app.config: {app.config}")
-    logger.debug(f"config: {config.dict()}")
+    logger.debug(f"config: {config().dict()}")
 
     return app
 

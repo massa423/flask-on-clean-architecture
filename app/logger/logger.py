@@ -38,7 +38,7 @@ class Logger:
 
         # ルートロガーを変更する必要がある。
         logger = getLogger()
-        logger.setLevel(config.LOG_LEVEL)
+        logger.setLevel(config().LOG_LEVEL)
         logger.addHandler(handler)
 
         getLogger("werkzeug").disabled = True
