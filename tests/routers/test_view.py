@@ -1,4 +1,4 @@
-class TestView:
+class TestTopPage:
     def test_top_page(self, client):
 
         rv = client.get("/")
@@ -8,6 +8,8 @@ class TestView:
         assert b'<a href="/redirect">redirect</a>' in rv.data
         assert b'<a href="/index">top</a>' in rv.data
 
+
+class TestSignUpPage:
     def test_signup_index(self, client):
         rv = client.get("/signup/index")
         assert b"<title>Signup</title>" in rv.data
