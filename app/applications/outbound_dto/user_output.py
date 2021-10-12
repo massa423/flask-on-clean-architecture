@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from pydantic import BaseModel, EmailStr, Field, SecretStr
+from pydantic import BaseModel, EmailStr, Field
 
 
 class UserOutput(BaseModel):
@@ -9,7 +9,6 @@ class UserOutput(BaseModel):
     """
 
     name: str = Field(None)
-    password1: SecretStr = Field(None)
     email: EmailStr = Field(None)
     created_at: datetime = Field(None)
     updated_at: datetime = Field(None)

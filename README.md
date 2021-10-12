@@ -62,6 +62,5 @@ pysen run format
 ## test
 
 ```
-export APP_ENV=test
-pytest -v --cov=app
+./run-test.sh
 ```
