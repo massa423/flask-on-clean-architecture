@@ -3,6 +3,7 @@ from typing import Any, Tuple
 
 from app.api.v1 import user
 from app.config import config
+from app.config.swagger_base import template
 from app.dependencies.repository_deps import RepositoryDIModule
 from app.dependencies.usecase_deps import UsecaseDIModule
 from app.interfaces.gateways.database.db import db_session
@@ -21,6 +22,7 @@ from flask import (
 )
 from flask.wrappers import Response
 from flask_injector import FlaskInjector
+from flasgger import Swagger
 from markupsafe import escape
 from werkzeug.exceptions import InternalServerError, NotFound
 from werkzeug.wrappers import Response as WerkzeugResponse
@@ -65,6 +67,7 @@ def init_app() -> Flask:
     app.after_request(after_action)
 
     FlaskInjector(app=app, modules=[UsecaseDIModule(), RepositoryDIModule()])
+    Swagger(app, template=template)
 
     logger.debug("app initialized")
     logger.debug(f"URL Map: {app.url_map}")

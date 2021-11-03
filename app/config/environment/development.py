@@ -14,3 +14,5 @@ class DevelopmentConfig(DefaultConfig):
 
     SECRET_KEY = b".\xa3\x1b5\x11\x9c$d\x02zS\x87\x9a;\x94\x03"
     LOG_LEVEL = DEBUG
+
+    SWAGGER_HOST = "127.0.0.1:5000"

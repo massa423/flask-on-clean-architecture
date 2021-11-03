@@ -20,3 +20,5 @@ class ProductionConfig(DefaultConfig):
 
     SECRET_KEY: Optional[str] = os.getenv("SECRET_KEY", None)
     LOG_LEVEL = INFO
+
+    SWAGGER_HOST = os.getenv("SWAGGER_HOST", None)
