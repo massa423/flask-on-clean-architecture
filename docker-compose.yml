@@ -36,6 +36,7 @@ services:
       DATABASE_PORT: 5432
       DATABASE_NAME: "testdb"
       DATABASE_HOST: "db"
+      SWAGGER_HOST: "127.0.0.1:8080"
     depends_on:
       - db
 

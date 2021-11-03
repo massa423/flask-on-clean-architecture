@@ -1,0 +1,32 @@
+tags:
+  - user
+description: 'Returns user based on name'
+summary: 'Find user by name'
+parameters:
+  - name: name
+    in: path
+    type: string
+    required: true
+definitions:
+  User:
+    type: object
+    properties:
+      name:
+        type: string
+        example: sample
+      email:
+        type: string
+        example: 'sample@example.com'
+      created_at:
+        type: string
+        format: date-time
+        example: '2021-11-03T08:06:37.140Z'
+      updated_at:
+        type: string
+        format: date-time
+        example: '2021-11-03T08:06:37.140Z'
+responses:
+  200:
+    description: User data
+    schema:
+      $ref: '#/definitions/User'
