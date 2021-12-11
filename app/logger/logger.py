@@ -1,3 +1,4 @@
+import logging
 import sys
 from logging import Formatter, StreamHandler, getLogger
 from typing import Any
@@ -36,10 +37,16 @@ class Logger:
         handler = StreamHandler(sys.stdout)
         handler.setFormatter(formatter)
 
-        # ルートロガーを変更する必要がある。
-        logger = getLogger()
+        logger = getLogger("app")
         logger.setLevel(config().LOG_LEVEL)
         logger.addHandler(handler)
+
+        # SQLAlchemyもフォーマットを揃える。
+        # https://github.com/sqlalchemy/sqlalchemy/blob/main/lib/sqlalchemy/engine/base.py
+        sqla_logger = getLogger("sqlalchemy.engine.Engine")
+        for h in sqla_logger.handlers:
+            sqla_logger.removeHandler(h)
+        sqla_logger.addHandler(handler)
 
         getLogger("werkzeug").disabled = True
 
