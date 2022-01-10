@@ -1,7 +1,7 @@
-import pytest
-
-from app.applications.outbound_dto.user_output import UserOutput
 from datetime import datetime
+
+import pytest
+from app.applications.outbound_dto.user_output import UserOutput
 
 
 class TestUserOutput:

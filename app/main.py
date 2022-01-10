@@ -10,19 +10,10 @@ from app.interfaces.gateways.database.db import db_session
 from app.libs.request_headers import RequestHeaders
 from app.logger.logger import Logger
 from app.routers import signup
-from flask import (
-    Flask,
-    abort,
-    flash,
-    redirect,
-    render_template,
-    request,
-    session,
-    url_for,
-)
+from flasgger import Swagger
+from flask import Flask, abort, flash, redirect, render_template, request, session, url_for
 from flask.wrappers import Response
 from flask_injector import FlaskInjector
-from flasgger import Swagger
 from markupsafe import escape
 from werkzeug.exceptions import InternalServerError, NotFound
 from werkzeug.wrappers import Response as WerkzeugResponse
@@ -33,9 +24,7 @@ logger = getLogger(__name__)
 def before_action() -> None:
     logger.info(f"request({request.method}): {request.url}")
 
-    rh = RequestHeaders(
-        host=request.headers.get("HOST"), user_agent=request.headers.get("USER_AGENT")
-    )
+    rh = RequestHeaders(host=request.headers.get("HOST"), user_agent=request.headers.get("USER_AGENT"))
 
     logger.debug(f"Host: {rh.host}, UserAgent: {rh.user_agent}")
 

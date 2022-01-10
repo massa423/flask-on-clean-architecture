@@ -1,7 +1,7 @@
-from logging import DEBUG, INFO
 import os
-import pytest
+from logging import DEBUG, INFO
 
+import pytest
 from app.exceptions import EnvironmentError
 
 
@@ -14,7 +14,7 @@ class TestConfig:
 
         from app.config import config
 
-        config().APP_VERSION = '0.1.0'
+        config().APP_VERSION = "0.1.0"
         config().SQL_ALCHEMY_ECHO = False
 
     def test_staging(self, staging_config):
@@ -36,10 +36,7 @@ class TestConfig:
 
         env = os.getenv("APP_ENV")
 
-        assert (
-            config(env).DATABASE_URL
-            == "postgresql://prod_user:prod_password@prod_host:15432/prod_database"
-        )
+        assert config(env).DATABASE_URL == "postgresql://prod_user:prod_password@prod_host:15432/prod_database"
         assert config(env).SECRET_KEY == "prod_secretkey"
         assert config(env).LOG_LEVEL == INFO
 

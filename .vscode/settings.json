@@ -18,13 +18,13 @@
   "python.formatting.provider": "black",
   "python.formatting.blackPath": ".venv/bin/black",
   "python.linting.flake8Args": [
-    "--max-line-length=88",
+    "--max-line-length=119",
     "--ignore=E402",
     "--max-complexity=20",
     "--exclude=tests/*"
   ],
   "python.formatting.blackArgs": [
-    "--line-length=88"
+    "--line-length=119"
   ],
   "python.linting.mypyArgs": [
     "--ignore-missing-imports",
@@ -32,9 +32,6 @@
     "--show-column-numbers",
     "--strict",
     "--exclude 'tests/'"
-  ],
-  "python.analysis.disabled": [
-    "no-self-argument"
   ],
   "python.analysis.extraPaths": [
     "${workspaceFolder}/.venv/bin"

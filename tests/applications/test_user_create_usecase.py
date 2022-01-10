@@ -1,9 +1,6 @@
 import pytest
-
 from app.applications.inbound_dto.user_input import UserInput
-from app.applications.user_create_usecase import (
-    UserCreateUsecaseImpl,
-)
+from app.applications.user_create_usecase import UserCreateUsecaseImpl
 from app.domains.user import User
 from app.interfaces.gateways.user_repository import UserRepository
 

@@ -1,5 +1,4 @@
 import pytest
-
 from app.applications.inbound_dto.user_input import UserInput
 
 
