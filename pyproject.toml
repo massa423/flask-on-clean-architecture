@@ -27,6 +27,7 @@ pysen = "^0.9.1"
 pre-commit = "^2.12.0"
 pytest-mock = "^3.5.1"
 pytest-cov = "^2.11.1"
+pytest-freezegun = "^0.4.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
