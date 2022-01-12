@@ -19,8 +19,8 @@
   "python.formatting.blackPath": ".venv/bin/black",
   "python.linting.flake8Args": [
     "--max-line-length=119",
-    "--ignore=E402",
-    "--max-complexity=20",
+    "--ignore=E402,E203,E231,E501,W503",
+    "--max-complexity=10",
     "--exclude=tests/*"
   ],
   "python.formatting.blackArgs": [
