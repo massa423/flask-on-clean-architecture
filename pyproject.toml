@@ -46,5 +46,7 @@ line_length = 119
 py_version = "py39"
 
 [[tool.pysen.lint.mypy_targets]]
-  paths = ["app"]
+  paths = ["app/"]
 
+[tool.pysen.lint.source]
+  includes = ["app/", "tests/"]
