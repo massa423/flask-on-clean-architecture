@@ -1,6 +1,7 @@
+from datetime import datetime
+
 import pytest
 from app.domains.user import User
-from datetime import datetime
 
 
 class TestUser:

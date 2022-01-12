@@ -1,6 +1,3 @@
-import json
-
-
 class TestUser:
     """
     user APIのテスト
@@ -14,10 +11,10 @@ class TestUser:
         rv = client.get("/api/v1/users/test-user")
         data = rv.get_json()
 
-        assert data["name"] == None
-        assert data["email"] == None
-        assert data["created_at"] == None
-        assert data["updated_at"] == None
+        assert data["name"] is None
+        assert data["email"] is None
+        assert data["created_at"] is None
+        assert data["updated_at"] is None
 
     def test_get_user_with_sample_data(self, client_with_testdata):
         """

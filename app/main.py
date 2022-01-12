@@ -71,7 +71,7 @@ app = init_app()
 
 @app.route("/")
 @app.route("/index")
-def index() -> str:
+def index() -> Any:
     return render_template("index.html")
 
 

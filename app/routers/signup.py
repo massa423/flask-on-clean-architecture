@@ -1,5 +1,5 @@
 from logging import getLogger
-from typing import Union
+from typing import Any, Union
 
 from app.applications.inbound_dto.user_input import UserInput
 from app.applications.user_create_usecase import UserCreateUsecase
@@ -16,7 +16,7 @@ bp = Blueprint("signup", __name__, url_prefix="/signup")
 
 @bp.route("/")
 @bp.route("index")
-def index() -> str:
+def index() -> Any:
     return render_template("signup/index.html")
 
 

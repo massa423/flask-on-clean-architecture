@@ -1,4 +1,3 @@
-import logging
 import sys
 from logging import Formatter, StreamHandler, getLogger
 from typing import Any
