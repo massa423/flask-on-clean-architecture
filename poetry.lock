@@ -580,7 +580,7 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "pysen"
-version = "0.10.1"
+version = "0.11.0"
 description = "Python linting made easy. Also a casual yet honorific way to address individuals who have entered an organization prior to you."
 category = "dev"
 optional = false
@@ -594,7 +594,7 @@ tomlkit = ">=0.5.11,<1.0.0"
 unidiff = ">=0.6.0,<1.0.0"
 
 [package.extras]
-lint = ["black (>=19.10b0,<=20.8)", "flake8 (>=3.7,<5)", "flake8-bugbear", "isort (>=4.3,<5.2.0)", "mypy (>=0.770,<0.800)"]
+lint = ["black (>=19.10b0,<=22.10)", "flake8 (>=3.7,<5)", "flake8-bugbear", "isort (>=4.3,<5.2.0)", "mypy (>=0.770,<0.800)"]
 
 [[package]]
 name = "pytest"
@@ -826,7 +826,7 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "beeb750ea43b3f35934fe4ea551205cb71c4cec45583aa8484a45448ee5d4de4"
+content-hash = "58488f1239507622f07a31bc34fc22e8c1111a2fb2b843a51a150df55eb16911"
 
 [metadata.files]
 atomicwrites = [
@@ -1256,8 +1256,8 @@ pyrsistent = [
     {file = "pyrsistent-0.18.0.tar.gz", hash = "sha256:773c781216f8c2900b42a7b638d5b517bb134ae1acbebe4d1e8f1f41ea60eb4b"},
 ]
 pysen = [
-    {file = "pysen-0.10.1-py3-none-any.whl", hash = "sha256:d7d6e53eefea4234b13094e65d7bd50bd6fc16dbbab75b17147caca1d55fa17f"},
-    {file = "pysen-0.10.1.tar.gz", hash = "sha256:68e6661f967ee8e91a75425933abd8c859c11b18426da8c7603c843513d616c7"},
+    {file = "pysen-0.11.0-py3-none-any.whl", hash = "sha256:d4e81e12f9f1b4cf25df0399d10b0201a9a4bae18846fe0e279179b657daf015"},
+    {file = "pysen-0.11.0.tar.gz", hash = "sha256:b9ea6c67289360f7bd9c95f8c79f603a775decb9342d2635dc40fcda92dfa53a"},
 ]
 pytest = [
     {file = "pytest-6.2.5-py3-none-any.whl", hash = "sha256:7310f8d27bc79ced999e760ca304d69f6ba6c6649c0b60fb0e04a4a77cacc134"},
