@@ -6,7 +6,7 @@ jobs:
     if: |
       github.event.pull_request.user.login == 'renovate[bot]' && contains(github.event.pull_request.body, ' **Automerge**: Enabled.')
     runs-on: ubuntu-latest
-    permisssions:
+    permissions:
       contents: write
       pull-request: write
     env:
