@@ -811,7 +811,7 @@ python-versions = "*"
 
 [[package]]
 name = "uwsgi"
-version = "2.0.29"
+version = "2.0.30"
 description = "The uWSGI server"
 category = "main"
 optional = false
@@ -1565,7 +1565,7 @@ unidiff = [
     {file = "unidiff-0.7.0.tar.gz", hash = "sha256:91bb13b4969514a400679d9ae5e29a6ffad85346087677f8b5e2e036af817447"},
 ]
 uwsgi = [
-    {file = "uwsgi-2.0.29.tar.gz", hash = "sha256:6bd150ae60d0d9947429ea7dc8e5f868de027e5eb38355fb613b9413732c432f"},
+    {file = "uwsgi-2.0.30.tar.gz", hash = "sha256:c12aa652124f062ac216077da59f6d247bd7ef938234445881552e58afb1eb5f"},
 ]
 virtualenv = [
     {file = "virtualenv-20.10.0-py2.py3-none-any.whl", hash = "sha256:4b02e52a624336eece99c96e3ab7111f469c24ba226a53ec474e8e787b365814"},
