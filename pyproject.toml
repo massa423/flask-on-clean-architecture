@@ -19,7 +19,7 @@ flasgger = "^0.9.5"
 
 [tool.poetry.dev-dependencies]
 mypy = "^1.0.0"
-pytest = "^8.0.0"
+pytest = "^9.0.0"
 flake8 = "^7.0.0"
 black = "^21.12b0"
 isort = "^7.0.0"
