@@ -13,7 +13,7 @@ Flask-SQLAlchemy = "^3.0.0"
 pydantic = "^2.0.0"
 email-validator = "^2.0.0"
 psycopg2 = "^2.8.6"
-injector = "^0.22.0"
+injector = "^0.24.0"
 Flask-Injector = "^0.15.0"
 flasgger = "^0.9.5"
 
